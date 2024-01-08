@@ -48,8 +48,9 @@ html {
     min-height: 100vh;
     width: 100%;
     height: auto;
-    background: -webkit-gradient(linear,left bottom,left top,color-stop(20%,#4383c3),color-stop(90%,#30b4cb));
-    background: linear-gradient(0deg,#4383c3 20%,#30b4cb 90%);
+    /* background: -webkit-gradient(linear,left bottom,left top,color-stop(20%,#4383c3),color-stop(90%,#30b4cb));
+    background: linear-gradient(0deg,#4383c3 20%,#30b4cb 90%); */
+    background-color: #025d8c;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -179,15 +180,22 @@ span {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    background-color: #025d8c;
+    /* background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%); */
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     align-items: center;
     opacity: 98%;
 }
-
+.result{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 #who-won{
     color: white;
@@ -211,6 +219,15 @@ span {
     border: solid white 2px;
     height: 40px;
     width: 200px;
+}
+#home{
+    color: white;
+    font-size:20px;
+    border-radius: 5px;
+    background-color: rgba(240, 248, 255, 0.342);
+    border: solid white 2px;
+    height: 40px;
+    width: 250px;
 }
 img{
     width: 100%;
