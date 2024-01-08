@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <div class="game-container">
+        
+        <div id="game-heading">
+            <h1 class="heading"><span>R</span>OCK <span>P</span>APPER <span>S</span>CISSOR</h1>
+            <hr id="line">
+            
+        </div>
+        <div id="game-score">
+            <div id="user">
+                USER
+                <div id="user-div">
+                    0
+                </div>
+            </div>
+            <div id="ai">
+                AI
+                <div id="ai-div">
+                    0
+                </div>
+            </div>
+        </div>
+        <div id="game-detail">
+            <h1>MAke Your Choices..!</h1>
+            <div id="move">moves left 10</div>
+            <div id="ai-choosed">
+            </div>
+        </div>
+        <div id="game-buttons">
+            <button id="button" onclick="Rock()"><img src="	https://www.rpsgame.org/assets/img/rock.svg"
+                    alt=""></button>
+            <button id="button" onclick="Papper()"><img src="https://www.rpsgame.org/assets/img/paper.svg"
+                    alt=""></button>
+            <button id="button" onclick="Scissors()"><img src="	https://www.rpsgame.org/assets/img/scissors.svg"
+                    alt=""></button>
+        </div>
+        <div id="result-popup">
+            <div class="result">
+                <div id="who-won"></div>
+                <div id="score"></div>
+                <a href="index2.html"><button id="play-again-button">PLAY AGAIN</button></a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let options = ["Rock", "Papper", "Scissors"]
+        let AI = 0
+        let USER = 0
+        let move = 10
+        let Who_Won
+        function Rock() {
+            if (move === 0) {
+                finish()
+            } else {
+                move--
+                document.getElementById("move").innerHTML = `moves left ${move}`;
+
+                let ai = ai_choosing()
+                if (ai === "Rock") {
+                    document.getElementById("ai-choosed").innerHTML = `DRAW`;
+                } else {
+                    document.getElementById("ai-choosed").innerHTML = `AI Choosed ${ai}`;
+                }
+
+                if (ai === "Papper") {
+                    AI++
+                    document.getElementById("ai-div").innerHTML = AI;
+                } else if (ai === "Scissors") {
+                    USER++
+                    document.getElementById("user-div").innerHTML = USER;
+                }
+            }
+        }
+        function Papper() {
+            if (move === 0) {
+                finish()
+            } else {
+                move--
+                document.getElementById("move").innerHTML = `moves left ${move}`;
+                let ai = ai_choosing()
+                if (ai === "Papper") {
+                    document.getElementById("ai-choosed").innerHTML = `DRAW`;
+                } else {
+                    document.getElementById("ai-choosed").innerHTML = `AI Choosed ${ai}`;
+                }
+
+                if (ai === "Scissors") {
+                    AI++
+                    document.getElementById("ai-div").innerHTML = AI;
+                } else if (ai === "Rock") {
+                    USER++
+                    document.getElementById("user-div").innerHTML = USER;
+                }
+            }
+
+        }
+        function Scissors() {
+            if (move === 0) {
+                finish()
+            } else {
+                move--
+                document.getElementById("move").innerHTML = `moves left ${move}`;
+                let ai = ai_choosing()
+                if (ai === "Scissors") {
+                    document.getElementById("ai-choosed").innerHTML = `DRAW`;
+                } else {
+                    document.getElementById("ai-choosed").innerHTML = `AI Choosed ${ai}`;
+                }
+
+                if (ai === "Rock") {
+                    AI++
+                    document.getElementById("ai-div").innerHTML = AI;
+                } else if (ai === "Papper") {
+                    USER++
+                    document.getElementById("user-div").innerHTML = USER;
+                }
+
+            }
+
+        }
+        function ai_choosing() {
+            let Random = Math.floor(Math.random() * options.length)
+            let selected_option = options[Random]
+            console.log(selected_option);
+            return selected_option;
+        }
+
+        function finish() {
+            if (USER > AI) {
+                Who_Won = "You win !"
+            } else if (AI > USER) {
+                Who_Won = "Ai win ...."
+            } else {
+                Who_Won = "Draw!!"
+            }
+            document.getElementById("result-popup").style.display = "flex"
+            document.getElementById("who-won").innerHTML = `<h1>${Who_Won}</h1>`
+            document.getElementById("score").innerHTML = `<h1>${USER} : ${AI}</h1>`
+        }
+    </script>
+</body>
+
+</html>
